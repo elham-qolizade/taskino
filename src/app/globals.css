@@ -19,8 +19,28 @@
   }
 }
 
+@layer base {
+  @font-face {
+    font-family: 'Vazirmatn-Regular';
+    src: url(../assets/fonts/static/Vazirmatn-Regular.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Vazirmatn-Bold';
+    src: url(../assets/fonts/static/Vazirmatn-Bold.ttf) format('truetype');
+  }
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: white;
+  font-family: 'Vazirmatn-Regular';
+}
+
+.VazirmatnBold {
+  font-family: 'Vazirmatn-Bold' !important;
+}
+
+.Radiuses {
+  border-top-left-radius: 140px / 80px;
+  border-top-right-radius: 140px / 80px;
 }

@@ -20,9 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased rounded-[40px]`}
       >
-        {children}
+        <main className="w-full">
+          {children}
+        </main>
       </body>
     </html>
   );
