@@ -7,8 +7,10 @@ import WorkTableIcon from "../../../public/images/WorkTableIcon.png";
 
 export default function Contents() {
   return (
-    <div className="w-full flex flex-col items-center z-10 gap-16 mt-4 mb-8">
-      <Image src={Logo} alt="Logo" width={190} height={190} />
+    <div className="w-full flex flex-col items-center z-10 gap-16 mt-4 mb-9">
+      <div className="animate-pulse">
+        <Image src={Logo} alt="Logo" width={190} height={190} />
+      </div>
 
       <div className="w-full flex flex-col items-center gap-4 px-4">
         <Image src={BoardIcon} alt="Board Icon" width={90} height={85} />

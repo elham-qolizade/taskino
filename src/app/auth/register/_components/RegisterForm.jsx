@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function RegisterForm() {
   return (
-    <div className="w-full flex flex-col items-center bg-[#073362] gap-8 px-5 pb-8 mt-[18rem] z-10">
+    <div className="w-full flex flex-col items-center bg-[#073362] gap-8 px-5 pt-2 rounded-t-[20px] pb-11 mt-[18rem] z-10">
       <div className="w-full flex flex-col items-center gap-1.5">
         <input
           type="text"
@@ -60,9 +62,14 @@ export default function RegisterForm() {
         />
       </div>
 
-      <button className="w-full text-center bg-[#E0EDFF] py-2 rounded-full text-[#073362] text-sm font-semibold">
+      <motion.button
+        className="w-full text-center bg-[#E0EDFF] py-2 rounded-full text-[#073362] text-sm font-semibold"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.5 }}
+      >
         ثبت نام
-      </button>
+      </motion.button>
     </div>
   );
 }
