@@ -23,11 +23,17 @@
   @font-face {
     font-family: 'Vazirmatn-Regular';
     src: url(../assets/fonts/static/Vazirmatn-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Vazirmatn-Bold';
     src: url(../assets/fonts/static/Vazirmatn-Bold.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
 }
 
@@ -40,7 +46,6 @@ body {
   font-family: 'Vazirmatn-Bold' !important;
 }
 
-.Radiuses {
-  border-top-left-radius: 140px / 80px;
-  border-top-right-radius: 140px / 80px;
+.CustomRadius {
+  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
 }
