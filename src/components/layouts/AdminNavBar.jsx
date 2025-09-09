@@ -6,7 +6,7 @@ import InboxIcon from "../elements/InboxIcon";
 
 export default function AdminNavBar() {
   return (
-    <div className="w-full fixed top-0 bg-[#073362] flex items-center justify-start gap-2.5 px-5 py-3.5">
+    <div className="w-full fixed top-0 bg-[#073362] flex items-center justify-start gap-2.5 px-5 py-3.5 z-10">
       <Image
         src={Profile}
         alt="Profile"
