@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>admin presence-absence page</div>
+    <div className='pt-20'>admin presence-absence page</div>
   )
 }

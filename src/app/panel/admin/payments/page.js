@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function page() {
   return (
-    <div>admin payments page</div>
+    <div className='pt-20'>admin payments page</div>
   )
 }
