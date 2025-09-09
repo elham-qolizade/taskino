@@ -6,6 +6,7 @@ import Image from "next/image";
 import LoginRegisterNavbar from "@/components/partials/LoginRegisterNavbar";
 import { motion } from "framer-motion";
 import LoginRegisterNavTitle from "@/components/partials/LoginRegisterNavTitle";
+import Link from "next/link";
 
 export default function LoginForm() {
   return (
@@ -53,9 +54,12 @@ export default function LoginForm() {
         </div>
 
         <div className="w-full flex flex-col items-center lg:gap-3 gap-2">
-          <button className="w-full rounded-[30px] md:bg-[#073362] bg-[#E0EDFF] md:text-[#F1F7FF] text-[#073362] VazirmatnBold text-lg py-3">
+          <Link
+            href="/panel/admin/dashboard"
+            className="w-full text-center rounded-[30px] md:bg-[#073362] bg-[#E0EDFF] md:text-[#F1F7FF] text-[#073362] VazirmatnBold text-lg py-3"
+          >
             ورود
-          </button>
+          </Link>
           <button className="w-full rounded-[30px] md:bg-[#F1F7FF] bg-[#E0EDFF] text-[#073362] VazirmatnBold text-lg py-3">
             رمز عبور خود را فراموش کرده‌اید؟
           </button>

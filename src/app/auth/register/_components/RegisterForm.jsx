@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import LoginRegisterNavTitle from "@/components/partials/LoginRegisterNavTitle";
 import Logo from "../../../../../public/images/Logo-V2.png";
+import Link from "next/link";
 
 export default function RegisterForm() {
   return (
@@ -79,9 +80,12 @@ export default function RegisterForm() {
           />
         </div>
 
-        <button className="w-full rounded-[30px] md:bg-[#073362] bg-[#E0EDFF] md:text-[#F1F7FF] text-[#073362] VazirmatnBold text-lg py-3">
+        <Link
+          href="/panel/expert/dashboard"
+          className="w-full text-center rounded-[30px] md:bg-[#073362] bg-[#E0EDFF] md:text-[#F1F7FF] text-[#073362] VazirmatnBold text-lg py-3"
+        >
           ورود
-        </button>
+        </Link>
       </div>
     </div>
   );
