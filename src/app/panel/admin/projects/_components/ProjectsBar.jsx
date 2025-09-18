@@ -66,12 +66,12 @@ export default function ProjectsBar() {
   return (
     <div className="w-full flex flex-col items-center gap-6">
       <div className="w-full flex items-center justify-between">
-        <h2 className="text-[20px] font-semibold text-[#073362] VazirmatnBold">
+        <h2 className="sm:text-[20px] text-[17px] font-semibold text-[#073362] VazirmatnBold">
           پروژه ها :
         </h2>
         <button
           onClick={() => setOpen(true)}
-          className="flex items-center gap-14 rounded-lg text-[#073362] cursor-pointer border-solid border-b-2 border-[#073362] p-2"
+          className="flex items-center md:gap-14 gap-7 rounded-lg text-[#073362] cursor-pointer border-solid border-b-2 border-[#073362] p-2"
         >
           <span className="text-sm font-semibold VazirmatnBold">
             افزودن پروژه جدید
@@ -142,22 +142,34 @@ export default function ProjectsBar() {
       ) : (
         <div className="w-full overflow-x-hidden">
           <Swiper
-            slidesPerView={Math.min(data.length, 4)}
-            spaceBetween={40}
+            slidesPerView={Math.min(data.length, 1.2)}
+            spaceBetween={10}
             freeMode={true}
             allowTouchMove={data.length > 4}
             modules={[FreeMode]}
             className="mySwiper"
             breakpoints={{
-              640: {
-                slidesPerView: Math.min(data.length, 1.5),
+              540: {
+                slidesPerView: Math.min(data.length, 2.5),
                 spaceBetween: 10,
               },
-              768: {
-                slidesPerView: Math.min(data.length, 3),
+              760: {
+                slidesPerView: Math.min(data.length, 1.75),
+                spaceBetween: 10,
+              },
+              820: {
+                slidesPerView: Math.min(data.length, 2),
+                spaceBetween: 10,
+              },
+              950: {
+                slidesPerView: Math.min(data.length, 2.5),
+                spaceBetween: 10,
+              },
+              1165: {
+                slidesPerView: Math.min(data.length, 3.3),
                 spaceBetween: 15,
               },
-              1024: {
+              1400: {
                 slidesPerView: Math.min(data.length, 4),
                 spaceBetween: 35,
               },

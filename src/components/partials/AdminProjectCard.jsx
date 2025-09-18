@@ -13,7 +13,7 @@ export default function AdminProjectCard({
   return (
     <div className="w-full bg-[#E6F1FD] rounded-[20px] flex flex-col items-start border-solid border-t-4 border-[#A6C2FF] gap-2 py-5">
       <div className="w-full flex flex-col items-start gap-5 px-5">
-        <h3 className="text-[16px] font-medium text-[#073362] VazirmatnBold">
+        <h3 className="sm:text-[16px] font-medium text-[#073362] VazirmatnBold">
           {project}
         </h3>
         <div className="flex items-center gap-1.5 text-[#073362]">
@@ -22,7 +22,7 @@ export default function AdminProjectCard({
             {expert}
           </span>
         </div>
-        <div className="w-full grid grid-cols-2">
+        <div className="w-full grid sm:grid-cols-2 grid-cols-1 sm:gap-0 gap-2">
           <div className="flex items-center gap-1">
             <span className="text-xs font-medium text-[#073362] VazirmatnBold">
               شروع :

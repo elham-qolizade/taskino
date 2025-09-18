@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Logo from "../../../public/images/Logo-V2.png";
+import LogoVII from "../../../public/images/LogoVII.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ExitIcon from "../elements/ExitIcon";
@@ -13,8 +14,9 @@ import PaymentsIcon from "../elements/PaymentsIcon";
 import PresenceAbsenceIcon from "../elements/PresenceAbsenceIcon";
 import { FaChevronDown } from "react-icons/fa6";
 import DropdownMenu from "../elements/DropdownMenu";
+import { IoClose } from "react-icons/io5";
 
-export default function AdminSideBar() {
+export default function AdminSideBar({ isOpen, setIsOpen }) {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState(null);
 
@@ -54,77 +56,127 @@ export default function AdminSideBar() {
     if (activeParent) setOpenMenu(activeParent.href);
   }, [pathname]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
-    <div className="w-[350px] h-screen sticky top-0 right-0 bg-[#F1F7FF] flex flex-col items-center justify-between p-5 gap-9">
-      <div className="animate-pulse">
-        <Image src={Logo} alt="Logo" width={150} height={150} />
-      </div>
+    <>
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-30"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-      <DropdownMenu />
+      <div
+        className={`${
+          isOpen ? "right-0" : "right-[-20rem] md:right-0"
+        } transition-all duration-300 ease-in-out xl:w-[350px] sm:w-[300px] w-[275px] h-screen md:sticky fixed z-40 top-0 right-0 bg-[#F1F7FF] flex flex-col items-center justify-between p-5 md:gap-9 gap-4`}
+      >
+        <div className="w-full flex items-center md:justify-center justify-between">
+          <div className="animate-pulse">
+            <Image
+              src={Logo}
+              alt="Logo"
+              width={150}
+              height={150}
+              className="md:block hidden"
+            />
+            <Image
+              src={LogoVII}
+              alt="Logo"
+              width={35}
+              height={35}
+              className="md:hidden block"
+            />
+          </div>
+          <button
+            className="text-[#073362] md:hidden block"
+            onClick={() => setIsOpen(false)}
+          >
+            <IoClose size={28} />
+          </button>
+        </div>
 
-      <ul className="w-full h-full flex flex-col items-start justify-start">
-        {links.map((link) => {
-          const isActive = pathname === link.href;
-          const isOpen = openMenu === link.href;
-          return (
-            <li key={link.href} className="mb-2 w-full">
-              <Link
-                href={link.href}
-                className={`flex items-center justify-between border-solid border-r-4 gap-1.5 py-2 px-4 rounded w-full text-right ${
-                  isActive ? "border-[#073362]" : "border-[#F1F7FF]"
-                }`}
-                onClick={() => {
-                  if (link.submenu) {
-                    setOpenMenu(isOpen ? null : link.href);
-                  }
-                }}
-              >
-                <div className="flex items-center gap-1.5">
-                  {link.icon}
-                  <span className="text-[16px] font-semibold VazirmatnBold text-[#073362]">
-                    {link.label}
-                  </span>
-                </div>
-                <FaChevronDown
-                  className={`transition-transform duration-300 text-[#073362] ${
-                    isOpen ? "rotate-180" : ""
+        <DropdownMenu />
+
+        <ul className="w-full h-full flex flex-col items-start justify-start">
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            const isOpen = openMenu === link.href;
+            return (
+              <li key={link.href} className="mb-2 w-full">
+                <Link
+                  href={link.href}
+                  className={`flex items-center justify-between border-solid border-r-4 gap-1.5 py-2 px-4 rounded w-full text-right ${
+                    isActive ? "border-[#073362]" : "border-[#F1F7FF]"
                   }`}
-                />
-              </Link>
-              {link.submenu && (
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out`}
-                  style={{
-                    maxHeight: isOpen ? `${link.submenu.length * 40}px` : "0px",
+                  onClick={() => {
+                    if (link.submenu) {
+                      setOpenMenu(isOpen ? null : link.href);
+                    }
+                    if (window.innerWidth < 768) {
+                      setIsOpen(false);
+                    }
                   }}
                 >
-                  <ul className="w-full flex flex-col items-start pr-14 mt-0.5">
-                    {link.submenu.map((sub, index) => (
-                      <li key={index} className="w-full">
-                        <button
-                          className="w-full text-right text-xs text-[#626063] font-normal cursor-pointer"
-                          onClick={() => {
-                            alert(`باز کردن مودال: ${sub}`);
-                          }}
-                        >
-                          {sub}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+                  <div className="flex items-center gap-1.5">
+                    {link.icon}
+                    <span className="text-[16px] font-semibold VazirmatnBold text-[#073362]">
+                      {link.label}
+                    </span>
+                  </div>
+                  <FaChevronDown
+                    className={`transition-transform duration-300 text-[#073362] ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </Link>
+                {link.submenu && (
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out`}
+                    style={{
+                      maxHeight: isOpen
+                        ? `${link.submenu.length * 40}px`
+                        : "0px",
+                    }}
+                  >
+                    <ul className="w-full flex flex-col items-start pr-14 mt-0.5">
+                      {link.submenu.map((sub, index) => (
+                        <li key={index} className="w-full">
+                          <button
+                            className="w-full text-right text-xs text-[#626063] font-normal cursor-pointer"
+                            onClick={() => {
+                              alert(`باز کردن مودال: ${sub}`);
+                            }}
+                          >
+                            {sub}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
 
-      <Link href="/" className="flex items-center gap-2">
-        <ExitIcon />
-        <span className="text-[16px] font-semibold VazirmatnBold text-[#073362]">
-          خروج
-        </span>
-      </Link>
-    </div>
+        <Link href="/" className="flex items-center gap-2">
+          <ExitIcon />
+          <span className="text-[16px] font-semibold VazirmatnBold text-[#073362]">
+            خروج
+          </span>
+        </Link>
+      </div>
+    </>
   );
 }
