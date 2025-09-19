@@ -37,13 +37,15 @@ export default function StatisticsBox() {
   ];
 
   return (
-    <div className="w-full grid grid-cols-4 gap-4">
+    <div className="w-full grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-3">
       {statistics.map((item, index) => (
         <div
           key={index}
-          className={`w-full flex items-start gap-2.5 ${item.bg} rounded-[30px] p-4`}
+          className={`w-full flex items-start sm:gap-2.5 gap-1.5 ${item.bg} rounded-[30px] sm:p-4 p-3`}
         >
-          <div className={`${item.iconBg} p-3.5 rounded-full`}>{item.icon}</div>
+          <div className={`${item.iconBg} sm:p-3.5 p-1.5 rounded-full`}>
+            {item.icon}
+          </div>
           <div className="flex flex-col items-start gap-2.5">
             <h3 className="text-sm font-medium text-[#073362] VazirmatnBold">
               {item.title}
